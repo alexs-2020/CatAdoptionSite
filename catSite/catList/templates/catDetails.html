@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ cat.name }}{% endblock %}
+
+{% block content %}
+<section class="cat-detail-section">
+    <div class="cat-detail-container">
+        <h1>{{ cat.name }}</h1>
+        <img src="{{ cat.image.url }}" alt="{{ cat.name }}" class="cat-image">
+        <p><strong>Age:</strong> {{ cat.age }} years</p>
+        <p><strong>Breed:</strong> {{ cat.breed }}</p>
+        <p><strong>Description:</strong> {{ cat.description }}</p>
+        <a href="{% url 'catList' %}" class="back-button">Back to All Cats</a>
+    </div>
+</section>
+{% endblock %}

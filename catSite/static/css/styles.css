@@ -1,0 +1,335 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar Styling */
+nav {
+    /*background-color:; !* Light blue color *!*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    font-family: Arial, sans-serif;
+}
+
+nav .logo a {
+    font-size: 1.5rem;
+    color: #333; /* Dark text color for contrast */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav ul li a {
+    color: #333; /* Dark text color for contrast */
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #555; /* Slightly darker color on hover */
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}
+
+.about-section {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-container h1,
+.about-container h2 {
+    color: #007bff; /* Accent color for headings */
+    margin-bottom: 1rem;
+}
+
+.about-container p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.about-skally {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.about-image {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+strong {
+    color: #007bff; /* Highlighted names and key terms */
+}
+
+.cat-list-section {
+    padding: 2rem;
+    text-align: center;
+}
+
+.cat-list-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.cat-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 250px; /* Adjust this width as needed */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.cat-image {
+    width: 100%;
+    max-width: 400px; /* Set max width */
+    height: 500px; /* Fixed height */
+    object-fit: cover; /* Ensure images fill the area without distortion */
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+.cat-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+
+.view-details-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #add8e6;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.view-details-button:hover {
+    background-color: #88c0d0;
+}
+
+.cat-detail-section {
+    padding: 2rem;
+    text-align: center;
+}
+
+.cat-detail-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cat-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #add8e6;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+
+.home-section {
+    padding: 2rem;
+    text-align: center;
+}
+
+.welcome-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.welcome-container h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.welcome-container p {
+    font-size: 1.2rem;
+    color: #666;
+    margin: 1rem 0;
+}
+
+.explore-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #add8e6;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.highlights {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.highlight {
+    max-width: 300px;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Smooth transition for sliding */
+}
+
+.carousel-item {
+    min-width: 100%; /* Each slide takes full width of the container */
+}
+.carousel-image {
+    width: 400px; /* Set fixed width */
+    height: 500px; /* Set fixed height */
+    object-fit: cover; /* Ensure the image fills the area without distorting */
+    border-radius: 8px;
+}
+
+
+
+/* Hero Section Styling */
+.hero-section {
+    color: red;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f5f5ef; /* Light background color */
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.hero-content {
+    flex: 1;
+    z-index: 2;
+}
+
+.hero-content .review {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.hero-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #6b8e23; /* Olive green color for button */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+    background-color: #556b2f;
+}
+
+.hero-image {
+    display: inline-block;
+    align-items: center;
+    /*flex: 1;*/
+
+    /*position: relative;*/
+    /*display: flex;*/
+    /*justify-content: flex-end;*/
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    opacity: 0.6; /* Faded effect */
+    object-fit: cover;
+    border-radius: 0 10px 10px 0; /* Rounded corners on the right */
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.hero-image::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to right, #f5f5ef 20%, transparent 80%);
+    z-index: 1;
+}
