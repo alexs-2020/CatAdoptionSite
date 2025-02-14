@@ -15,6 +15,7 @@ class Cat(models.Model):
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='cats/')
     cropping = ImageRatioField('image', '400x500')  # Set the crop aspect ratio here
+    personality_traits = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name

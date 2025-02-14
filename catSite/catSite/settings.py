@@ -29,6 +29,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+
 
 # Application definition
 
@@ -50,12 +54,18 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',  # ✅ CSRF protection
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'https://yourdomain.com']
+CSRF_COOKIE_HTTPONLY = False  # ✅ Allows JavaScript to read CSRF cookies
+CSRF_COOKIE_SECURE = False    # ❌ Set to True only if using HTTPS
+CSRF_COOKIE_SAMESITE = 'Lax'  # ✅ Allows CSRF cookies to be sent correctly
 
 ROOT_URLCONF = 'catSite.urls'
 
@@ -150,3 +160,14 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# settings.py
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # SMTP server for Gmail
+EMAIL_PORT = 587  # TLS port for Gmail
+EMAIL_USE_TLS = True  # Enable TLS
+EMAIL_HOST_USER = 'your_email@gmail.com'  # Your email address
+EMAIL_HOST_PASSWORD = 'your_app_specific_password'  # App-specific password for Gmail
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

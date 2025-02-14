@@ -17,13 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from django.conf.urls.i18n import set_language
 
 from catSite import settings
 
 urlpatterns = [
+    path('set_language/', set_language, name='set_language'),
     path('', include('core.urls')),
     path('catlist/', include('catList.urls')),
     path('admin/', admin.site.urls),
+
 ]
 
 if settings.DEBUG:

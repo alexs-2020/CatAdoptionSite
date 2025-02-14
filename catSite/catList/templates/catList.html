@@ -1,28 +1,78 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Available Cats{% endblock %}
 
 {% block content %}
-<section class="cat-list-section">
-    <div class="cat-list-container">
-        <h1>Available Cats</h1>
+<section class="cats-section">
+  <div class="cats-container">
+    <h2 class="section-title">Our Available Cats</h2>
+    <div class="cats-grid">
 
-        {% if cats %}
-            <div class="cat-cards">
-                {% for cat in cats %}
-                    <div class="cat-card">
-                        <img src="{{ cat.image.url }}" alt="{{ cat.name }}" class="cat-image">
-                        <h2>{{ cat.name }}</h2>
-                        <p>Age: {{ cat.age }} years</p>
-                        <p>Breed: {{ cat.breed }}</p>
-                        <p>Description: {{ cat.description }}</p>
-                        <a href="{% url 'cat_detail' cat.id %}" class="view-details-button">View Details</a>
-                    </div>
-                {% endfor %}
+      {% for cat in cats %}
+        <form method="GET">
+            <div class="cat-card">
+              <button type="submit" name="selected_cat" value="{{ cat.id }}" class="cat-card-button">
+                <!-- Cat Image -->
+                <div class="cat-image">
+                  <img
+                    src="{{ cat.image.url|default:'/static/images/placeholder.svg' }}"
+                    alt="{{ cat.name }}"
+                  />
+                </div>
+                <!-- Cat Details -->
+                <div class="cat-details">
+                  <h3 class="cat-name">{{ cat.name }}</h3>
+                  <p class="cat-info">{{ cat.age }} years • {{ cat.sexo }} • {{ cat.breed }}</p>
+                  <p class="cat-description">{{ cat.description }}</p>
+{#                  <a href="{% url 'cat_detail' cat.id %}" class="cat-link">Learn More</a>#}
+                </div>
+              </button>
             </div>
-        {% else %}
-            <p>No cats available at the moment. Please check back later!</p>
-        {% endif %}
+        </form>
+      {% endfor %}
+
+
     </div>
+  </div>
+
+  <!-- Modal -->
+  {% if selected_cat %}
+    <div class="modal">
+      <div class="modal-content">
+        <h3 class="modal-title">{{ selected_cat.name }}</h3>
+        <p class="modal-info">{{ selected_cat.age }} years • {{ selected_cat.sexo }} • {{ selected_cat.breed }}</p>
+        <div class="modal-image-container">
+          <img src="{{ selected_cat.image.url|default:'/static/images/placeholder.svg' }}" alt="{{ selected_cat.name }}">
+        </div>
+        <p class="modal-description">{{ selected_cat.description }}</p>
+        <div>
+          <h4>Personality Traits:</h4>
+              <p> {{  selected_cat.personality_traits }}</p>
+        </div>
+        <div>
+          <h4>Health Information:</h4>
+          <p>{{ selected_cat.health_info }}</p>
+        </div>
+{#        <div class="modal-adoption">#}
+{#          <p>Interested in adopting? <a href="{% url 'home' %}" class="modal-contact-link">Contact us</a></p>#}
+{#        </div>#}
+        <div class="modal-adoption">
+            <p>Interested in adopting? Contact us via:</p>
+            <p>
+            📧 <a href="mailto:Merlinblue-cattery@hotmail.com" class="modal-contact-link">Merlinblue-cattery@hotmail.com</a>
+            </p>
+            <p><i class="fa-brands fa-whatsapp"></i> <a href="https://wa.me/34667866660" target="_blank" class="modal-contact-link"> WhatsApp: +34 667 86 66 60</a></p>
+
+        </div>
+{#        <a href="{% url 'catList' %}" class="modal-close">Close</a>#}
+          <a href="{{ request.path }}" class="modal-close">Close</a>
+      </div>
+    </div>
+  {% endif %}
+
+
+
 </section>
+
 {% endblock %}
