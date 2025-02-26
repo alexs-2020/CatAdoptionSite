@@ -31,7 +31,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = os.getenv("DEBUG", "False") == "True"
 SECRET_KEY = os.getenv("SECRET_KEY", "your-default-secret-key")
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
+ALLOWED_HOSTS = [ 'localhost', '127.0.0.1', 'athletic-alignment.railway.internal' ]
+CSRF_TRUSTED_ORIGINS = [ ALLOWED_HOSTS, 'https://athletic-alignment.railway.internal' ]
 
 DATABASES = {
     "default": dj_database_url.config(default=os.getenv("DATABASE_URL"))
