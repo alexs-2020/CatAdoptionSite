@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 from socials.apps import SocialConfig
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,12 +22,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-fy8t5!u^jr#2&9eekoet#4n+_p6u6b$qdry5tbc0omeicdnt6j'
+# SECRET_KEY = 'django-insecure-fy8t5!u^jr#2&9eekoet#4n+_p6u6b$qdry5tbc0omeicdnt6j'
+#
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
+#
+# ALLOWED_HOSTS = []
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
+SECRET_KEY = os.getenv("SECRET_KEY", "your-default-secret-key")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
-ALLOWED_HOSTS = []
+
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
