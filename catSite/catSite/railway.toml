@@ -1,8 +1,12 @@
-[phases.setup]
-nixPkgs = ["python312", "gcc"]
+[build]
+builder = "nixpacks"
+buildCommand = "python3 -m venv /opt/venv && . /opt/venv/bin/activate && pip install -r requirements.txt"
 
-[phases.install]
-cmds = ["python3 -m venv --copies /opt/venv && . /opt/venv/bin/activate && pip install --no-cache-dir -r requirements.txt"]
+[deploy]
+preDeployCommand = ["python3 manage.py migrate --noinput"]
+startCommand = "gunicorn catSite.wsgi:application --bind 0.0.0.0:8000"
 
-[phases.start]
-cmds = ["python3 manage.py migrate && gunicorn catSite.wsgi --bind 0.0.0.0:$PORT"]
+[env]
+PORT = "8000"
+DJANGO_SETTINGS_MODULE = "catSite.settings"
+PYTHONUNBUFFERED = "1"
