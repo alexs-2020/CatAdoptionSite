@@ -36,8 +36,8 @@ environ.Env.read_env(os.path.join(BASE_DIR, "catSite/catSite/.env"))  # Loads fr
 
 DEBUG = env.bool("DEBUG", default=False)
 SECRET_KEY = env("SECRET_KEY", default="django-insecure-fy8t5!u^jr#2&9eekoet#4n+_p6u6b$qdry5tbc0omeicdnt6j")
-ALLOWED_HOSTS = [ 'localhost', '127.0.0.1', 'athletic-alignment.railway.internal' ]
-CSRF_TRUSTED_ORIGINS = [ ALLOWED_HOSTS, 'https://athletic-alignment.railway.internal' ]
+ALLOWED_HOSTS = [ 'localhost', '127.0.0.1', 'catadoptionsite-production.up.railway.app' ]
+CSRF_TRUSTED_ORIGINS = [ ALLOWED_HOSTS, 'https://catadoptionsite-production.up.railway.app' ]
 
 DATABASES = {
     "default": dj_database_url.config(default=env("DATABASE_URL", default="sqlite:///db.sqlite3"))
