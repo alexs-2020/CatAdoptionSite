@@ -1,6 +1,10 @@
 [build]
 builder = "nixpacks"
-buildCommand = "python3 -m venv /opt/venv && . /opt/venv/bin/activate && python3 -m pip install -r requirements.txt"
+buildCommand = "python3 -m venv /opt/venv && . /opt/venv/bin/activate && pip install --no-cache-dir -r requirements.txt"
 
 [deploy]
-startCommand = "python3 manage.py migrate && gunicorn catSite.wsgi:application"
+preDeployCommand = ["python3 manage.py migrate"]
+startCommand = "gunicorn catSite.wsgi:application --bind 0.0.0.0:$PORT"
+healthcheckPath = "/"
+healthcheckTimeout = 100
+restartPolicyType = "always"
