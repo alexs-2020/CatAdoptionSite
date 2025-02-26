@@ -13,6 +13,8 @@ import dj_database_url
 from pathlib import Path
 import os
 from socials.apps import SocialConfig
+import environ
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,13 +31,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 #
 # ALLOWED_HOSTS = []
 
-DEBUG = os.getenv("DEBUG", "False") == "True"
-SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-fy8t5!u^jr#2&9eekoet#4n+_p6u6b$qdry5tbc0omeicdnt6j")
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, "catSite/catSite/.env"))  # Loads from .env file
+
+DEBUG = env.bool("DEBUG", default=False)
+SECRET_KEY = env("SECRET_KEY", default="django-insecure-fy8t5!u^jr#2&9eekoet#4n+_p6u6b$qdry5tbc0omeicdnt6j")
 ALLOWED_HOSTS = [ 'localhost', '127.0.0.1', 'athletic-alignment.railway.internal' ]
 CSRF_TRUSTED_ORIGINS = [ ALLOWED_HOSTS, 'https://athletic-alignment.railway.internal' ]
 
 DATABASES = {
-    "default": dj_database_url.config(default=os.getenv("DATABASE_URL"))
+    "default": dj_database_url.config(default=env("DATABASE_URL", default="sqlite:///db.sqlite3"))
 }
 
 # DATABASES = {
