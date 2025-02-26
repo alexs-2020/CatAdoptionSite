@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ALLOWED_HOSTS = []
 
 DEBUG = os.getenv("DEBUG", "False") == "True"
-SECRET_KEY = os.getenv("SECRET_KEY", "your-default-secret-key")
+SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-fy8t5!u^jr#2&9eekoet#4n+_p6u6b$qdry5tbc0omeicdnt6j")
 ALLOWED_HOSTS = [ 'localhost', '127.0.0.1', 'athletic-alignment.railway.internal' ]
 CSRF_TRUSTED_ORIGINS = [ ALLOWED_HOSTS, 'https://athletic-alignment.railway.internal' ]
 
